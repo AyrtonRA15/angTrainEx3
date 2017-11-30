@@ -1,3 +1,4 @@
+import { ITodo } from './todo.interface';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -6,7 +7,7 @@ export class TodoService {
   constructor() { }
 
   _todoInput = '';
-  _todos = [];
+  _todos: ITodo[] = [];
   _todosLeft = 0;
   _filterBy = '';
 
@@ -42,7 +43,8 @@ export class TodoService {
     this._todosLeft++;
   }
 
-  onDelete(index: number) {
+  onDelete(todo: ITodo) {
+    let index = this._todos.indexOf(todo);
     (!this._todos[index].completed) ? this._todosLeft-- : '';
     this._todos.splice(index, 1);
   }

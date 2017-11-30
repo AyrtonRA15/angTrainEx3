@@ -1,3 +1,4 @@
+import { ITodo } from './todo.interface';
 import { TodoService } from './todo.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -26,8 +27,8 @@ export class TodosComponent implements OnInit {
     this.todoInput = '';
   }
 
-  onDelete(index: number) {
-    this._todoService.onDelete(index);
+  onDelete(todo: ITodo) {
+    this._todoService.onDelete(todo);
   }
 
   onChangeState($event, index) {

@@ -1,7 +1,7 @@
 <div class="container">
   <input class="list-group-item" type="text" [(ngModel)]="todoInput" (keyup.enter)="addTodo()" placeholder="What needs to be done?">
   <ul class="list-group">
-    <app-todo *ngFor="let todo of todoService.todos | filterBy:todoService.filterBy; let i = index" [todo]="todo" (onDelete)="onDelete(i)"
+    <app-todo *ngFor="let todo of todoService.todos | filterBy:todoService.filterBy; let i = index" [todo]="todo" (onDelete)="onDelete(todo)"
       (onChangeState)="onChangeState($event, i)"></app-todo>
   </ul>
   <div class="list-group-item row" *ngIf="todoService.todos.length > 0">
