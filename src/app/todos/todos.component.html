@@ -4,12 +4,12 @@
     <app-todo *ngFor="let todo of todoService.todos | filterBy:todoService.filterBy; let i = index" [todo]="todo" (onDelete)="onDelete(todo)"
       (onChangeState)="onChangeState($event, i)"></app-todo>
   </ul>
-  <div class="list-group-item row" *ngIf="todoService.todos.length > 0">
+  <div class="list-group-item row" *ngIf="todoService.todos.length">
     <div class="col-sm-3 pt-4">
       Items Left: {{ todoService.todosLeft }}
     </div>
     <div class="col-sm-6">
-      <button class="btn btn-default btn-sm" (click)="changeFilter('all')" [ngClass]="{'filter-active': todoService.filterBy === 'all'}">All</button>
+      <button class="btn btn-default btn-sm" (click)="changeFilter('all')" [class.filter-active]="todoService.filterBy === 'all'">All</button>
       <button class="btn btn-default btn-sm" (click)="changeFilter('active')" [ngClass]="{'filter-active': todoService.filterBy === 'active'}">Active</button>
       <button class="btn btn-default btn-sm" (click)="changeFilter('completed')" [ngClass]="{'filter-active': todoService.filterBy === 'completed'}">Completed</button>
     </div>

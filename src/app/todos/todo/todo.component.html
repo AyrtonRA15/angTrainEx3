@@ -2,10 +2,4 @@
   <input type="checkbox" [(ngModel)]="todo.completed" (change)="changeState($event)">
   <label class="todo-name" [ngClass]="{'line-through': todo.completed}">{{ todo.name }}</label>
   <button class="pull-right btn btn-info btn-sm" (click)="delete()" *ngIf="showDelete">X</button>
-
-  <!-- <input type="checkbox" [(ngModel)]="todo.completed" (change)="changeState($event)">
-  <span >
-    {{ todo.name }}
-  </span>
-  <button (click)="delete()">X</button> -->
 </li>

@@ -10,7 +10,7 @@ export class FilterByPipe implements PipeTransform {
     if (filterBy === 'all') {
       return todos;
     } else if (filterBy === 'active') {
-      return todos.filter(todo => todo.completed === false);
+      return todos.filter(todo => !todo.completed);
     } else if (filterBy === 'completed') {
       return todos.filter(todo => todo.completed === true);
     }

@@ -12,23 +12,27 @@ export class TodoComponent implements OnInit {
   @Output() onChangeState = new EventEmitter();
   @Output() onDelete = new EventEmitter();
 
+  private _showDelete = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  showDelete = false;
-
-  delete() {
+  delete(): void {
     this.onDelete.emit();
   }
 
-  changeState(event) {
+  changeState(event): void {
     this.onChangeState.emit({ e: event });
   }
 
-  changeDeleteVisibility(showDelete: boolean) {
-    this.showDelete = showDelete;
+  changeDeleteVisibility(showDelete: boolean): void {
+    this._showDelete = showDelete;
+  }
+
+  get showDelete() {
+    return this._showDelete;
   }
 
 }

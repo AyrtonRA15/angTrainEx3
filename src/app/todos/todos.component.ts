@@ -9,37 +9,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
 
+  private _todoInput: string;
+
   constructor(
     private _todoService: TodoService
-  ) { }
+  ) {
+    this.todoInput = '';
+  }
 
   ngOnInit() {
   }
 
-  todoInput = '';
+  addTodo(): void {
+    this._todoService.add(this._todoInput);
+    this._todoInput = '';
+  }
+
+  onDelete(todo: ITodo): void {
+    this._todoService.onDelete(todo);
+  }
+
+  onChangeState($event, index): void {
+    this._todoService.onChangeState($event, index);
+  }
+
+  changeFilter(filterBy: string): void {
+    this._todoService.changeFilter(filterBy);
+  }
+
+  clearCompleted(): void {
+    this._todoService.clearCompleted();
+  }
 
   get todoService() {
     return this._todoService;
   }
 
-  addTodo() {
-    this._todoService.add(this.todoInput);
-    this.todoInput = '';
+  get todoInput() {
+    return this._todoInput;
   }
 
-  onDelete(todo: ITodo) {
-    this._todoService.onDelete(todo);
-  }
-
-  onChangeState($event, index) {
-    this._todoService.onChangeState($event, index);
-  }
-
-  changeFilter(filterBy: string) {
-    this._todoService.changeFilter(filterBy);
-  }
-
-  clearCompleted() {
-    this._todoService.clearCompleted();
+  set todoInput(todoInput: string) {
+    this._todoInput = todoInput;
   }
 }
