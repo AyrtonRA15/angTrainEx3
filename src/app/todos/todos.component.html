@@ -1,0 +1,12 @@
+<input type="text" [(ngModel)]="todoInput" (keyup.enter)="addTodo()">
+<br>
+<app-todo *ngFor="let todo of todoService.todos | filterBy:todoService.filterBy; let i = index" [todo]="todo" (onDelete)="onDelete(i)"
+  (onChangeState)="onChangeState($event, i)"></app-todo>
+<br>
+<br> Items Left: {{ todoService.todosLeft }}
+<br>
+<button (click)="changeFilter('all')">All</button>
+<button (click)="changeFilter('active')">Active</button>
+<button (click)="changeFilter('completed')">Completed</button>
+<br>
+<button (click)="clearCompleted()" *ngIf="todoService.todosLeft < todoService.todos.length">Clear Completed</button>

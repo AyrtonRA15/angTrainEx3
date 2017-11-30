@@ -1,0 +1,7 @@
+<div>
+  <input type="checkbox" [(ngModel)]="todo.completed" (change)="changeState($event)">
+  <span [ngClass]="{'line-through': todo.completed}">
+    {{ todo.name }}
+  </span>
+  <button (click)="delete()">X</button>
+</div>
