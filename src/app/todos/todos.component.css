@@ -1,0 +1,33 @@
+.container {
+    width: 500px !important;
+}
+
+.list-group {
+    margin-bottom: 0px;
+}
+
+.list-group-item {
+    width: 500px;
+    margin: 0px;
+}
+
+input {
+    width: 500px !important;
+    margin: 2px 0px;
+}
+
+.filter-active {
+    background-color: rgb(15, 141, 163);
+    color: white;
+}
+
+.btn:focus,.btn:active {
+    color: white;
+    background-color: rgb(15, 141, 163);
+    outline: none !important;
+    box-shadow: none;
+ }
+
+ .pt-4 {
+     padding-top: 4px;
+ }

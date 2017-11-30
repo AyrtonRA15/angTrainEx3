@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterBy'
+  name: 'filterBy',
+  pure: false
 })
 export class FilterByPipe implements PipeTransform {
 
@@ -13,7 +14,7 @@ export class FilterByPipe implements PipeTransform {
     } else if (filterBy === 'completed') {
       return todos.filter(todo => todo.completed === true);
     }
-    return null;
+    return todos;
   }
 
 }

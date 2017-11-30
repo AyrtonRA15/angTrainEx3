@@ -1,12 +1,20 @@
-<input type="text" [(ngModel)]="todoInput" (keyup.enter)="addTodo()">
-<br>
-<app-todo *ngFor="let todo of todoService.todos | filterBy:todoService.filterBy; let i = index" [todo]="todo" (onDelete)="onDelete(i)"
-  (onChangeState)="onChangeState($event, i)"></app-todo>
-<br>
-<br> Items Left: {{ todoService.todosLeft }}
-<br>
-<button (click)="changeFilter('all')">All</button>
-<button (click)="changeFilter('active')">Active</button>
-<button (click)="changeFilter('completed')">Completed</button>
-<br>
-<button (click)="clearCompleted()" *ngIf="todoService.todosLeft < todoService.todos.length">Clear Completed</button>
+<div class="container">
+  <input class="list-group-item" type="text" [(ngModel)]="todoInput" (keyup.enter)="addTodo()" placeholder="What needs to be done?">
+  <ul class="list-group">
+    <app-todo *ngFor="let todo of todoService.todos | filterBy:todoService.filterBy; let i = index" [todo]="todo" (onDelete)="onDelete(i)"
+      (onChangeState)="onChangeState($event, i)"></app-todo>
+  </ul>
+  <div class="list-group-item row" *ngIf="todoService.todos.length > 0">
+    <div class="col-sm-3 pt-4">
+      Items Left: {{ todoService.todosLeft }}
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-default btn-sm" (click)="changeFilter('all')" [ngClass]="{'filter-active': todoService.filterBy === 'all'}">All</button>
+      <button class="btn btn-default btn-sm" (click)="changeFilter('active')">Active</button>
+      <button class="btn btn-default btn-sm" (click)="changeFilter('completed')">Completed</button>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-link btn-sm" (click)="clearCompleted()" *ngIf="todoService.todosLeft < todoService.todos.length">Clear Completed</button>
+    </div>
+  </div>
+</div>

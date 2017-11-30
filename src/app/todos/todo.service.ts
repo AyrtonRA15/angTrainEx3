@@ -8,7 +8,7 @@ export class TodoService {
   _todoInput = '';
   _todos = [];
   _todosLeft = 0;
-  _filterBy = 'all';
+  _filterBy = '';
 
   get todoInput() {
     return this._todoInput;

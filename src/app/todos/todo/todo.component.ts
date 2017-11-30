@@ -1,3 +1,4 @@
+import { ITodo } from './../todo.interface';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  @Input() todo;
+  @Input() todo: ITodo;
   @Output() onChangeState = new EventEmitter();
   @Output() onDelete = new EventEmitter();
 
@@ -16,12 +17,18 @@ export class TodoComponent implements OnInit {
   ngOnInit() {
   }
 
+  showDelete = false;
+
   delete() {
     this.onDelete.emit();
   }
 
   changeState(event) {
     this.onChangeState.emit({ e: event });
+  }
+
+  changeDeleteVisibility(showDelete: boolean) {
+    this.showDelete = showDelete;
   }
 
 }

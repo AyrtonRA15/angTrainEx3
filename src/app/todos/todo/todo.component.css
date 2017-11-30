@@ -1,3 +1,11 @@
+
+.list-group-item {
+    width: 500px;
+}
 .line-through { 
     text-decoration: line-through;
+    color: grey;
+}
+.todo-name {
+    margin-left: 15px;
 }
